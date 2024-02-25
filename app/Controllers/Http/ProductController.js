@@ -3,6 +3,10 @@
 const ProductService = use("App/Services/ProductService");
 
 class ProductController {
+  constructor() {
+    this.productService = new ProductService();
+  }
+
   async store({ request, response }) {
     try {
       const productService = new ProductService();
@@ -84,6 +88,18 @@ class ProductController {
     } catch (error) {
       return response.status(500).json({
         message: "Erro ao excluir o produto.",
+        error: error.message,
+      });
+    }
+  }
+  async index({ response }) {
+    try {
+      const productList = await this.productService.getAllProducts();
+
+      return response.status(200).json(productList);
+    } catch (error) {
+      return response.status(500).json({
+        message: "Erro ao listar os produtos.",
         error: error.message,
       });
     }

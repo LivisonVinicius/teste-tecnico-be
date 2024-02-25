@@ -37,6 +37,21 @@ class ProductService {
 
     return product;
   }
+
+  async getAllProducts() {
+    const products = await Product.query().orderBy("name").fetch();
+
+    if (!products || products.rows.length === 0) {
+      throw new Error("Nenhum produto encontrado.");
+    }
+
+    return products.rows.map((product) => ({
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      price: product.price,
+    }));
+  }
 }
 
 module.exports = ProductService;
