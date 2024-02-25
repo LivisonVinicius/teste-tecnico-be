@@ -20,6 +20,11 @@ class ProductService {
 
     return product;
   }
+
+  async getProductById(productId) {
+    const product = await Product.findOrFail(productId);
+    return product;
+  }
 }
 
 module.exports = ProductService;

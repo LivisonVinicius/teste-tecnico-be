@@ -16,3 +16,4 @@ Route.get("client", "ClientController.index");
 
 Route.post("product", "ProductController.store");
 Route.put("product/:id", "ProductController.update");
+Route.get("product/:id", "ProductController.show");

@@ -42,6 +42,28 @@ class ProductController {
       });
     }
   }
+
+  async show({ params, response }) {
+    try {
+      const productId = params.id;
+
+      const productService = new ProductService();
+      const product = await productService.getProductById(productId);
+
+      if (!product) {
+        return response
+          .status(404)
+          .json({ message: "Produto não encontrado." });
+      }
+
+      return response.status(200).json(product);
+    } catch (error) {
+      return response.status(500).json({
+        message: "Erro ao buscar detalhes do produto.",
+        error: error.message,
+      });
+    }
+  }
 }
 
 module.exports = ProductController;
