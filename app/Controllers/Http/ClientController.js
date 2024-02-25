@@ -27,6 +27,7 @@ class ClientController {
         .json({ message: "Erro ao criar cliente.", error: error.message });
     }
   }
+
   async update({ params, request, response }) {
     const { id } = params;
 
@@ -42,6 +43,24 @@ class ClientController {
       return response
         .status(500)
         .json({ message: "Erro ao atualizar cliente", error: error.message });
+    }
+  }
+
+  async index({ response }) {
+    try {
+      const clients = await ClientService.getAllClients();
+
+      const clientsData = clients.map((client) => ({
+        id: client.id,
+        name: client.name,
+        cpf: client.cpf,
+      }));
+
+      return response.json(clientsData);
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ message: "Erro ao listar clientes.", error: error.message });
     }
   }
 }
