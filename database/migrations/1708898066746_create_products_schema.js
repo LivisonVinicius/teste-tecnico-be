@@ -8,6 +8,7 @@ class ProductsTableSchema extends Schema {
       table.increments();
       table.string("name").notNullable();
       table.text("description");
+      table.text("category");
       table.decimal("price", 10, 2).notNullable();
       table.timestamps();
     });
