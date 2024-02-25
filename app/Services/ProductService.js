@@ -25,6 +25,18 @@ class ProductService {
     const product = await Product.findOrFail(productId);
     return product;
   }
+  async deleteProduct(productId) {
+    const product = await Product.findOrFail(productId);
+
+    if (!product) {
+      return null;
+    }
+
+    product.deleted_at = new Date();
+    await product.save();
+
+    return product;
+  }
 }
 
 module.exports = ProductService;

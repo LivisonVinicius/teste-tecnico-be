@@ -10,6 +10,7 @@ class ProductsTableSchema extends Schema {
       table.text("description");
       table.text("category");
       table.decimal("price", 10, 2).notNullable();
+      table.datetime("deleted_at").nullable();
       table.timestamps();
     });
   }

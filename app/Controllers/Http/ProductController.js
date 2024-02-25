@@ -64,6 +64,30 @@ class ProductController {
       });
     }
   }
+
+  async destroy({ params, response }) {
+    try {
+      const productId = params.id;
+
+      const productService = new ProductService();
+      const deletedProduct = await productService.deleteProduct(productId);
+
+      if (!deletedProduct) {
+        return response
+          .status(404)
+          .json({ message: "Produto não encontrado." });
+      }
+
+      return response
+        .status(200)
+        .json({ message: "Produto excluído com sucesso." });
+    } catch (error) {
+      return response.status(500).json({
+        message: "Erro ao excluir o produto.",
+        error: error.message,
+      });
+    }
+  }
 }
 
 module.exports = ProductController;
