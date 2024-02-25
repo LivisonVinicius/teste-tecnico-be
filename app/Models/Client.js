@@ -12,6 +12,12 @@ class Client extends Model {
     }
   }
 
+  static async find(id) {
+    console.log(id);
+    this.query().where("id", id).first();
+    return await this.query().where("id", id).first();
+  }
+
   address() {
     return this.hasOne("App/Models/Address");
   }

@@ -27,6 +27,23 @@ class ClientController {
         .json({ message: "Erro ao criar cliente.", error: error.message });
     }
   }
+  async update({ params, request, response }) {
+    const { id } = params;
+
+    const newData = request.only(["name", "cpf"]);
+
+    try {
+      const updatedClient = await ClientService.updateClient(id, newData);
+      return response.status(200).json({
+        message: "Cliente atualizado com sucesso",
+        client: updatedClient,
+      });
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ message: "Erro ao atualizar cliente", error: error.message });
+    }
+  }
 }
 
 module.exports = ClientController;
