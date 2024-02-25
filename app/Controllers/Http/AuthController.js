@@ -5,7 +5,7 @@ const JwtService = use("App/Services/JwtService");
 
 class AuthController {
   constructor() {
-    this.jwtService = new JwtService("your-secret-key");
+    this.jwtService = new JwtService("paodebatata12345");
   }
   async signup({ request, response }) {
     const { username, email, password } = request.only([
@@ -32,12 +32,11 @@ class AuthController {
     const { email, password } = request.all();
 
     const user = await UserService.verifyCredentials(email, password);
-    console.log("oi");
     if (!user) {
       return response.status(401).json({ error: "Credenciais inválidas" });
     }
 
-    const token = this.jwtService.generateToken({ userId: user.id });
+    const token = await auth.generate(user);
 
     return response.status(200).json({ token });
   }

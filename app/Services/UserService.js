@@ -24,7 +24,6 @@ class UserService {
   }
   async verifyCredentials(email, password) {
     const user = await User.findBy("email", email);
-    console.log(user);
 
     if (user && (await user.verifyPassword(password))) {
       return user;
