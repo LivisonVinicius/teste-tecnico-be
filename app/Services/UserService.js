@@ -15,12 +15,21 @@ class UserService {
         error.status = 409;
         throw error;
       }
-
       const user = await User.create({ username, email, password });
       return user;
     } catch (error) {
       if (error.status === 409) throw error;
       throw new Error("Erro ao criar usuário.");
+    }
+  }
+  async verifyCredentials(email, password) {
+    const user = await User.findBy("email", email);
+    console.log(user);
+
+    if (user && (await user.verifyPassword(password))) {
+      return user;
+    } else {
+      return null;
     }
   }
 }
