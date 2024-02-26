@@ -1,32 +1,29 @@
-# Adonis fullstack application
+Teste Técnico para Back-End da Be - Documentação
+Este documento descreve a solução desenvolvida para o Teste Técnico de Back-End da Be. A solução consiste em uma API RESTful conectada a um banco de dados MySQL, desenvolvida utilizando o framework Adonis (Node.js).
 
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
+Configuração do Projeto
+Pré-requisitos
+Antes de iniciar, certifique-se de ter o Node.js e o MySQL instalados em sua máquina.
 
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
-
-## Setup
-
-Use the adonis command to install the blueprint
-
-```bash
-adonis new yardstick
+Instalação
+Clone o repositório do projeto do GitHub:
 ```
-
-or manually clone the repo and then run `npm install`.
-
-
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
+git clone <link-do-repositorio>
 ```
-# teste-tecnico-be
+Acesse o diretório do projeto:
+bash
+Copy code
+cd nome-do-projeto
+Instale as dependências do projeto:
+bash
+Copy code
+npm install
+Configure as variáveis de ambiente:
+Crie um arquivo .env na raiz do projeto e configure as variáveis de ambiente necessárias, incluindo as credenciais do banco de dados.
+
+Configuração do Banco de Dados
+Execute as migrações para criar as tabelas no banco de dados:
+bash
+Copy code
+node ace migration:run
+Uso da API
