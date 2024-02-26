@@ -1,4 +1,5 @@
 Teste Técnico para Back-End da Be - Documentação
+
 Este documento descreve a solução desenvolvida para o Teste Técnico de Back-End da Be. A solução consiste em uma API RESTful conectada a um banco de dados MySQL, desenvolvida utilizando o framework Adonis (Node.js).
 
 Configuração do Projeto
