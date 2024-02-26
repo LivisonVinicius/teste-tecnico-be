@@ -13,6 +13,7 @@ Route.post("login", "AuthController.login");
 Route.post("client", "ClientController.store");
 Route.put("client/:id", "ClientController.update");
 Route.get("client", "ClientController.index");
+Route.get("client/:id", "ClientController.show");
 
 Route.post("product", "ProductController.store");
 Route.put("product/:id", "ProductController.update");

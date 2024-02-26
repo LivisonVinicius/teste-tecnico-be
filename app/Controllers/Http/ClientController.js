@@ -63,6 +63,25 @@ class ClientController {
         .json({ message: "Erro ao listar clientes.", error: error.message });
     }
   }
+
+  async show({ params, request, response }) {
+    try {
+      const clientId = params.id;
+      const monthYear = request.input("month_year");
+
+      const { client, sales } = await ClientService.getClientWithSales(
+        clientId,
+        monthYear
+      );
+
+      return response.status(200).json({ client, sales });
+    } catch (error) {
+      return response.status(500).json({
+        message: "Erro ao buscar cliente e vendas.",
+        error: error.message,
+      });
+    }
+  }
 }
 
 module.exports = ClientController;
